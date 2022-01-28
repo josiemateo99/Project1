@@ -1,4 +1,5 @@
 from fileinput import filename
+from http import client
 from pydoc import importfile
 import sys
 import socket   
@@ -24,11 +25,13 @@ def main():
         try:
             inputFile = open(fileName, "r")
             readFile = inputFile.read()
+            sock.send(fileName.encode("utf-8"))
+
         except:
             print("File Not Found")
             exit()
 
-        
+
 
         
 
