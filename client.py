@@ -20,28 +20,19 @@ def main():
             print("UNSUCCESSFUL")
             exit(1)
         
-        
-
         command1 = sock.recv(1024)
+        print(command1)
 
-        if command1:
-            print("Recieved:", len(command1))
-            l = sock.send(command1)
-            print("Sent bytes:", l)
-        else:
-            print("Failed to send")
-            exit()
+        sock.send(b'confirm-accio\r\n')
 
         command2 = sock.recv(1024)
-        if command2:
-            print("Recieved:", len(command2))
-            l = sock.send(command2)
-            print("Sent bytes:", l)
-        else:
-            print("Failed to send")
-            exit()
+        print(command2)
 
+        sock.send(b'confirm-accio-again\r\n\r\n')        
         
+        command3 = sock.recv(1024)
+        print(command3)
+
 main()
 
    
