@@ -1,6 +1,3 @@
-from fileinput import filename
-from http import client
-from pydoc import importfile
 import sys
 import socket   
 
@@ -12,34 +9,39 @@ def main():
         fileName = str(sys.argv[3])
     except:
         print("Error in input")
-        exit(1)
+        exit()
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+        #sock.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 2048)
         try:
             sock.connect((host,port))
             print("SUCCESS")
         except:
             print("UNSUCCESSFUL")
             exit(1)
-
-        try:
-            inputFile = open(fileName, "r")
-            readFile = inputFile.read()
-            sock.send(fileName.encode("utf-8"))
-
-        except:
-            print("File Not Found")
-            exit()
-
-
-
+        
         
 
+        command1 = sock.recv(1024)
 
+        if command1:
+            print("Recieved:", len(command1))
+            l = sock.send(command1)
+            print("Sent bytes:", l)
+        else:
+            print("Failed to send")
+            exit()
 
-    print(host)
-    print(port)
+        command2 = sock.recv(1024)
+        if command2:
+            print("Recieved:", len(command2))
+            l = sock.send(command2)
+            print("Sent bytes:", l)
+        else:
+            print("Failed to send")
+            exit()
 
+        
 main()
 
    
