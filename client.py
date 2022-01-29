@@ -1,7 +1,6 @@
 import sys
 import socket   
 
-
 def main():
     try:
         host = str(sys.argv[1])
@@ -12,7 +11,6 @@ def main():
         exit()
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-        #sock.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 2048)
         try:
             sock.connect((host,port))
             print("SUCCESS")
@@ -30,8 +28,19 @@ def main():
 
         sock.send(b'confirm-accio-again\r\n\r\n')        
         
-        command3 = sock.recv(1024)
-        print(command3)
+
+        try:
+            inputFile = open(fileName, "rb")
+        except:
+            print("File Not Found")
+            exit()
+
+        fileData = inputFile.read()
+
+        sock.send(fileData)
+
+
+        print("Sent over")
 
 main()
 
