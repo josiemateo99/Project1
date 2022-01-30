@@ -11,6 +11,7 @@ def main():
         exit()
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+        sock.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 2048)
         try:
             sock.connect((host,port))
             print("SUCCESS")
