@@ -14,12 +14,19 @@ def main():
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 2048)
         try:
             sock.connect((host,port))
-            #sock.settimeout(10)
             print("SUCCESS")
         except:
             sys.stderr.write("ERROR: (Incorrect HOST/PORT)")
             exit(1)
         
+
+        print("Socket Time-Out " + str(sock.gettimeout()))
+
+        sock.settimeout(10)
+
+        print("Socket Time-Out " + str(sock.gettimeout()))
+
+
         command1 = sock.recv(1024)
         print(command1)
 
