@@ -16,6 +16,7 @@ def main():
             sock.settimeout(10)
         except:
             sys.stderr.write("ERROR: TIMED OUT")
+            exit(1)
         try:
             sock.connect((host,port))
             print("SUCCESS")
