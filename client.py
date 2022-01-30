@@ -16,16 +16,12 @@ def main():
             sock.connect((host,port))
             print("SUCCESS")
         except:
+            print("Socket Time-Out " + str(sock.gettimeout()))
+            sock.settimeout(10)
+            print("Socket Time-Out " + str(sock.gettimeout()))
             sys.stderr.write("ERROR: (Incorrect HOST/PORT)")
             exit(1)
         
-
-        print("Socket Time-Out " + str(sock.gettimeout()))
-
-        sock.settimeout(10)
-
-        print("Socket Time-Out " + str(sock.gettimeout()))
-
 
         command1 = sock.recv(1024)
         print(command1)
