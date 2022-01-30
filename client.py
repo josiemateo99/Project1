@@ -12,13 +12,11 @@ def main():
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 2048)
+        sock.settimeout(10)
         try:
             sock.connect((host,port))
             print("SUCCESS")
         except:
-            print("Socket Time-Out " + str(sock.gettimeout()))
-            sock.settimeout(10)
-            print("Socket Time-Out " + str(sock.gettimeout()))
             sys.stderr.write("ERROR: (Incorrect HOST/PORT)")
             exit(1)
         
