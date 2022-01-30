@@ -34,7 +34,7 @@ def main():
         try:
             inputFile = open(fileName, "rb")
         except:
-            print("File Not Found")
+            sys.stderr.write("ERROR: (FILE NOT FOUND)")
             exit()
 
         fileData = inputFile.read()
