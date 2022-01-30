@@ -12,11 +12,7 @@ def main():
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 2048)
-        try:
-            sock.settimeout(10000)
-        except:
-            sys.stderr.write("ERROR: TIMED OUT")
-            exit(1)
+    
         try:
             sock.connect((host,port))
             print("SUCCESS")
@@ -40,7 +36,7 @@ def main():
             inputFile = open(fileName, "rb")
         except:
             sys.stderr.write("ERROR: (FILE NOT FOUND)")
-            exit()
+            exit(1)
 
         fileData = inputFile.read()
 
