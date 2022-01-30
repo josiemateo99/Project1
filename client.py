@@ -7,7 +7,7 @@ def main():
         port = int(sys.argv[2])
         fileName = str(sys.argv[3])
     except:
-        print("Error in input")
+        print("ERROR: Host or Port types incorrect")
         exit()
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
@@ -16,7 +16,8 @@ def main():
             sock.connect((host,port))
             print("SUCCESS")
         except:
-            print("UNSUCCESSFUL")
+            print("ERROR: Unable to Connect")
+            
             exit(1)
         
         command1 = sock.recv(1024)
