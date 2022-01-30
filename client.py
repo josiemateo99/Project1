@@ -16,34 +16,42 @@ def main():
         try:
             sock.connect((host,port))
             print("SUCCESS")
+
+            try:
+                command1 = sock.recv(1024)
+                print(command1)
+
+                sock.send(b'confirm-accio\r\n')
+
+                command2 = sock.recv(1024)
+                print(command2)
+
+                sock.send(b'confirm-accio-again\r\n\r\n')        
+                
+
+                try:
+                    inputFile = open(fileName, "rb")
+                except:
+                    sys.stderr.write("ERROR: (FILE NOT FOUND)")
+                    exit(1)
+
+                fileData = inputFile.read()
+
+                sock.send(fileData)
+
+
+                print("Sent over")
+
+            except:
+                sys.stderr.write("ERROR: UNABLE TO CONNECT TO HOST/PORT")
+                exit(1)
+
         except:
             sys.stderr.write("ERROR: (Incorrect HOST/PORT)")
             exit(1)
         
 
-        command1 = sock.recv(1024)
-        print(command1)
-
-        sock.send(b'confirm-accio\r\n')
-
-        command2 = sock.recv(1024)
-        print(command2)
-
-        sock.send(b'confirm-accio-again\r\n\r\n')        
         
-
-        try:
-            inputFile = open(fileName, "rb")
-        except:
-            sys.stderr.write("ERROR: (FILE NOT FOUND)")
-            exit(1)
-
-        fileData = inputFile.read()
-
-        sock.send(fileData)
-
-
-        print("Sent over")
 
 main()
 
