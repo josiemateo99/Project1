@@ -8,7 +8,7 @@ def main():
         fileName = str(sys.argv[3])
     except:
         sys.stderr.write("ERROR: (Incorrect Order/Types)")
-        exit()
+        exit(1)
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 2048)
@@ -18,7 +18,7 @@ def main():
             print("SUCCESS")
         except:
             sys.stderr.write("ERROR: (Incorrect HOST/PORT)")
-            exit()
+            exit(1)
         
         command1 = sock.recv(1024)
         print(command1)
