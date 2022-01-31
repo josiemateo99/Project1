@@ -11,4 +11,6 @@
 # Contributions/Credits to Code
  - Python Socket Documentation:  https://docs.python.org/3/library/socket.html
  - 8.3 of Python Handling Errors Documentation: https://docs.python.org/3/tutorial/errors.html
- - Professor Alex Afanasyev Lectures:2-2 Python and Programming Review
+ - Professor Alex Afanasyev:
+     -  2-2 Python and Programming Review
+     -  Client Python Code: https://github.com/aa-fiu-classes/19-fall-cnt-4713-python-socket-snippets/blob/master/3-client.py
