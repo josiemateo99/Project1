@@ -1,4 +1,4 @@
-# Project1 -> Client Using TCP
+# Project1 | Part 1 -> Client Using TCP
  - CNT 4713 Project 1 Accio
 
 # What does this Program do?
