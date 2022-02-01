@@ -1,3 +1,4 @@
+import os
 import sys
 import socket   
 
@@ -32,13 +33,20 @@ def main():
 
                     try:
                         inputFile = open(fileName, "rb")
+                        
+                        file_size = os.path.getsize(fileName)
+
+                        print("Size of File: ", file_size)
+                        
+                        partialFileData = inputFile.read(1024)
+
+                        while partialFileData:
+                            sentFileData = sock.send(partialFileData)
+                            partialFileData = inputFile.read(1024)
+
                     except:
                         sys.stderr.write("ERROR: (FILE NOT FOUND)")
                         exit(1)
-
-                    fileData = inputFile.read()
-
-                    sock.send(fileData)
 
 
                     print("Sent over")
