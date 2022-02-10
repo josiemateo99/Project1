@@ -55,10 +55,10 @@ def main():
                     sys.stderr.write("ERROR: UNABLE TO CONNECT TO HOST/PORT")
                     exit(1)
             except:
-                sys.stderr.write("ERROR: (TIMED OUT)")
+                sys.stderr.write("ERROR: (Incorrect HOST/PORT)")
                 exit(1)
         except:
-            sys.stderr.write("ERROR: (Incorrect HOST/PORT)")
+            sys.stderr.write("ERROR: (TIMED OUT)")
             exit(1)
         
 
